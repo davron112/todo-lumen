@@ -2,14 +2,14 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models;
+use App\Models\Family;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
 {
     public function index()
     {
-        echo "Test Index";
+        return app(Family::class)->get()->toTree();
     }
 
     public function store()

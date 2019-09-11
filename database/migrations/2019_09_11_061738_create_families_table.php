@@ -21,6 +21,7 @@ class CreateFamiliesTable extends Migration
             $table->string('relationship')->nullable();
             $table->date('birth_date')->nullable();
             NestedSet::columns($table);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
