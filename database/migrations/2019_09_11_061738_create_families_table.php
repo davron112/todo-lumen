@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreateFamiliesTable extends Migration
 {
@@ -16,13 +17,11 @@ class CreateFamiliesTable extends Migration
         Schema::create('families', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('relationship')->nullable();
-            $table->date('birth_date');
-            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->date('birth_date')->nullable();
+            NestedSet::columns($table);
             $table->timestamps();
-
-            $table->foreign('parent_id')->references('id')->on('families')->onDelete('SET NULL');
         });
     }
 
