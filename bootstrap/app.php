@@ -1,6 +1,5 @@
 <?php
 
-use Kalnoy\Nestedset\NestedSetServiceProvider;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -79,10 +78,10 @@ $app->singleton(
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
-$app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
-$app->register(NestedSetServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
+$app->register(\Prettus\Repository\Providers\RepositoryServiceProvider::class);
+$app->register(\Kalnoy\Nestedset\NestedSetServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
