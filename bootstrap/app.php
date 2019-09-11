@@ -22,9 +22,9 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -80,8 +80,8 @@ $app->singleton(
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
-$app->register(\Prettus\Repository\Providers\RepositoryServiceProvider::class);
-$app->register(\Kalnoy\Nestedset\NestedSetServiceProvider::class);
+$app->register(Prettus\Repository\Providers\LumenRepositoryServiceProvider::class);
+$app->register(Kalnoy\Nestedset\NestedSetServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

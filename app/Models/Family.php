@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\TableName;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
 class Family extends Model
 {
-    use Authenticatable, Authorizable, \Illuminate\Database\Eloquent\SoftDeletes, \Kalnoy\Nestedset\NodeTrait;
+    use TableName, Authenticatable, Authorizable, \Illuminate\Database\Eloquent\SoftDeletes, \Kalnoy\Nestedset\NodeTrait;
 
     /**
      * The attributes that are mass assignable.
