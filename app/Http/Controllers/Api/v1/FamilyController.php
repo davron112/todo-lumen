@@ -9,18 +9,21 @@ class FamilyController extends Controller
 {
     public function index()
     {
-        echo "333";
+        echo "Test Index";
     }
 
     public function store()
     {
+        echo "Test store";
     }
 
     public function update()
     {
+        echo "Test update";
     }
 
     public function delete()
     {
+        echo "Test delete";
     }
 }
