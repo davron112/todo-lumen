@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\StoreFamilyRequest;
 use App\Models\Family;
 use Illuminate\Http\Request;
 use Illuminate\Log\Logger;
@@ -9,36 +10,47 @@ use Illuminate\Log\Logger;
 class FamilyController extends Controller
 {
     /**
-     * @return mixed
+     * @param Family $family
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Family $family)
     {
-        return app(Family::class)->get()->toTree();
+        return response()->json($family->get()->toTree());
     }
 
-
-    public function store()
+    /**
+     * @param Request $request
+     * @param Family $family
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     *
+     */
+    public function store(Request $request, Family $family)
     {
-        echo "Test store";
+        $this->validate($request, $family->validate());
+        $family = Family::create($request->all());
+
+        return response()->json($family);
     }
 
     public function update()
     {
-        echo "Test update";
+        // "Test update";
     }
 
     /**
      * @param $id
      * @param Family $family
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
+     *
      */
     public function show($id, Family $family)
     {
-        return $family->ancestorsOf($id);
+        return response()->json($family->ancestorsOf($id));
     }
 
     public function delete()
     {
-        echo "Test delete";
+        // "Test delete";
     }
 }

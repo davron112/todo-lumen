@@ -25,14 +25,30 @@ class Family extends Model
      * Relation for parent id.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    /*public function parent()
+    public function parent()
     {
         return $this->belongsTo(self::class);
-    }*/
+    }
 
 
     public static function resetActionsPerformed()
     {
         static::$actionsPerformed = 0;
+    }
+
+
+    /**
+     * Set model validation rules.
+     *
+     * @return array
+     */
+    public function validate()
+    {
+        return [
+            'first_name'   => 'required|string',
+            'last_name'    => 'string',
+            'relationship' => 'string',
+            'birth_date'   => 'date',
+        ];
     }
 }
