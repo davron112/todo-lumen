@@ -41,6 +41,11 @@ $router->group([
             'uses' => 'FamilyController@index',
         ]);
 
+        $router->get('/{id}', [
+            'as'   => 'show',
+            'uses' => 'FamilyController@show',
+        ]);
+
     });
 
 });
